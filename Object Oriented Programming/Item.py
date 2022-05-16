@@ -1,4 +1,5 @@
 import csv
+from unicodedata import name
 
 class item:
 
@@ -17,9 +18,18 @@ class item:
         assert quantity >= 0, f"Quantity {quantity} must be greater than or equal to zero"
 
         # assigning instance attributes
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
+
+    @property
+    # Property Decorator = Read only attribute
+    def name(self):
+        return self.__name
+
+    """@name.setter
+    def name(self, value):
+        self.__name = value""" # setter allows us to set value for read only attributes
         
         
 
@@ -54,3 +64,22 @@ class item:
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __connect(self, smpt_server):
+        pass
+
+    def __prepare_body(self):
+        return f"""
+        Hello,
+        We have {self.name} {self.quantity} times.
+        Regards,
+        Saroj Baniya 
+        """
+
+    def __send(self):
+        pass
+
+    def send_email(self):
+        self.__connect('')
+        self.__prepare_body()
+        self.__send()
