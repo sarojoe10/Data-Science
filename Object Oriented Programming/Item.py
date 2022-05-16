@@ -65,10 +65,10 @@ class item:
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
-    def __connect(self, smpt_server):
+    def __connect(self, smpt_server): # __ before a method helps in abstraction
         pass
 
-    def __prepare_body(self):
+    def __prepare_body(self): # __ before a method helps in abstraction
         return f"""
         Hello,
         We have {self.name} {self.quantity} times.
@@ -76,7 +76,7 @@ class item:
         Saroj Baniya 
         """
 
-    def __send(self):
+    def __send(self): # __ before a method helps in abstraction
         pass
 
     def send_email(self):
